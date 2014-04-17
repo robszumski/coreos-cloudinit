@@ -6,6 +6,10 @@ Only a subset of [cloud-config functionality][cloud-config] is implemented. A se
 
 [cloud-config]: http://cloudinit.readthedocs.org/en/latest/topics/format.html#cloud-config-data
 
+## How to Provide Cloud-Config
+
+CoreOS tries to conform to each platform's native method to provide configuration data. Each cloud provider tends to be unique, but the complexity of this has been abstracted by CoreOS. You can view each platform's instructions on their documentation pages. The most universal way to provide cloud-config is [via config-drive]({{site.url}}/docs/cluster-management/setup/cloudinit-config-drive/), which attaches a read-only device to the machine, that contains your cloud-config file.
+
 ## CoreOS Parameters
 
 ### coreos.etcd
@@ -262,9 +266,6 @@ Provide a list of objects with the following attributes:
 - **content**: Data to write at the provided `path`
 - **permissions**: String representing file permissions in octal notation (i.e. '0644')
 - **owner**: User and group that should own the file written to disk. This is equivalent to the `<user>:<group>` argument to `chown <user>:<group> <path>`.
-
-Explicitly not implemented is the **encoding** attribute.
-The **content** field must represent exactly what should be written to disk.
 
 ### manage_etc_hosts
 
